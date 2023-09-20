@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fan1</title>
+    <style>
+
+        div[data-fanspeed="cooling"]{
+            border: 5px solid blue;
+        }
+        
+        .box{
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            background-image: url("fan1.png");
+            background-repeat:no-repeat;
+            background-size:cover;
+            margin: auto;
+            animation: fan;
+            animation-duration: 0.9s;
+            animation-timing-function:linear;
+            animation-iteration-count: infinite;
+            animation-play-state: paused;
+        }
+        @keyframes fan {
+            0%{
+                transform: rotate(0deg) ;
+            }
+            100%{
+                transform: rotate(359deg);
+            }
+            
+        }
+        .buttongroup > button:first-child{
+            background-color:blueviolet;
+            border:thick;
+            padding: 80px 80px;
+            width: 65px;
+            height:50px ;
+            background-image: url("onoff.jpg.png");
+            background-size: cover;
+            background-position: -4px 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" id="fanbox" data-fanspeed="cooling">
+        
+    </div>
+     <div style="text-align: center;" class="buttongroup">
+        <button onclick="startFan(0)"></button>
+        <button onclick="startFan(1)">1</button>
+        <button onclick="startFan(2)">2</button>
+        <button onclick="startFan(3)">3</button>
+     </div>
+  <script>
+          
+          //dry rule
+
+
+
+          /*es function ko or jyadaya acha or optimizing kese bnega
+          */
+                 
+          function x(vasu){//perameter vasu ki jgh kuch bhi de skte h ye bss age ke function as return krega element return kr rha h 
+               return document.querySelector(vasu);
+
+          }
+          //ye return kraega sare aage ke conditions ko
+             
+          //we have to chake some condition
+          //if else if else if ...else ladder
+
+
+          //function defination for startfan
+          function startFan(speed){
+           //we needed to chake condition of speed by if/else
+           if(speed == 0){
+               //  document.querySelector('.box').style.animationPlayState='paused';
+                 x('.box').style.animationPlayState='paused';
+                 x('[onclick="startFan(0)"]').style.backgroundPosition='-4px -2px';
+                
+               //  document.querySelector('fanbox').style.animationDuration='0.0s'
+           } else if(speed == 1){
+            //id= # class=. queryselecter se kuch bhi select kr skte h class id our 
+                 x('#fanbox').style.animationPlayState='running';
+                 x('#fanbox').style.animationDuration='1.3s';
+                 x('[onclick="startFan(0)"]').style.backgroundPosition='165px 0px';
+           }else if(speed == 2){//data-fanspeed=custumatribute    cooling=
+                x('[data-fanspeed="cooling"]').style.animationPlayState='running';
+                x('[data-fanspeed="cooling"]').style.animationDuration='0.8s';
+
+                x('[onclick="startFan(0)"]').style.backgroundPosition='165px 0px';
+                        //js quary selacter ka use krenge element ko use krne ke liy
+                        
+             //   document.getElementById('fanbox').style.animationPlayState='running';
+            //speed sbse fast kren ke liy 
+              //  Document.getElementById('fanbox').style.animationDuration='0.5';
+           }else{
+            //style me animationplaystate poused kri h toh ynha on krne ke liy
+             document.getElementById('fanbox').style.animationPlayState='running';
+            //speed sbse fast kren ke liy 
+                document.getElementById('fanbox').style.animationDuration='0.1s';
+                x('[onclick="startFan(0)"]').style.backgroundPosition='165px 0px';
+           }
+          };  
+          </script>
+</body>
+</html>
